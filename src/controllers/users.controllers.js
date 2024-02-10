@@ -1,12 +1,20 @@
 const User = require("../models/user");
 
 const obtenerUsuarios = async (req, res) => {
-  const usuarios = await User.find();
+  try {
+    const usuarios = await User.find();
 
-  return res.json({
-    msg: "Usuarios obtenidos",
-    data: usuarios,
-  });
+    // console.log(name);
+
+    return res.json({
+      msg: "Usuarios obtenidos",
+      data: usuarios,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      msg: "Error en el servidor",
+    });
+  }
 };
 
 const obtenerUsuario = async (req, res) => {
