@@ -36,15 +36,32 @@ const crearUsuario = async (req, res) => {
   });
 };
 
-const actualizarUsuario = (req, res) => {
+const actualizarUsuario = async (req, res) => {
+  const { id } = req.params;
+  const { password } = req.body;
+
+  const usuario = {
+    password: password,
+  };
+
+  const usuario_actualizado = await User.findByIdAndUpdate(id, usuario, {
+    new: true,
+  });
+
   return res.json({
     msg: "Usuario actualizado",
+    data: usuario_actualizado,
   });
 };
 
-const eliminarUsuario = (req, res) => {
+const eliminarUsuario = async (req, res) => {
+  const { id } = req.params;
+
+  const usuario_eliminado = await User.findByIdAndDelete(id);
+
   return res.json({
     msg: "Usuario eliminado",
+    data: usuario_eliminado,
   });
 };
 
