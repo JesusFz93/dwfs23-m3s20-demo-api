@@ -21,11 +21,10 @@ const obtenerUsuario = async (req, res) => {
 };
 
 const crearUsuario = async (req, res) => {
-  const { user_name, password } = req.body;
+  // const { user_name, password, activo } = req.body;
 
   const usuario = {
-    user_name: user_name,
-    password: password,
+    ...req.body,
   };
 
   const usuario_creado = await User(usuario).save();
@@ -38,10 +37,10 @@ const crearUsuario = async (req, res) => {
 
 const actualizarUsuario = async (req, res) => {
   const { id } = req.params;
-  const { password } = req.body;
+  // const { password } = req.body;
 
   const usuario = {
-    password: password,
+    ...req.body,
   };
 
   const usuario_actualizado = await User.findByIdAndUpdate(id, usuario, {
