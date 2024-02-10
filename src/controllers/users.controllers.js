@@ -4,6 +4,12 @@ const obtenerUsuarios = (req, res) => {
   });
 };
 
+const obtenerUsuario = (req, res) => {
+  return res.json({
+    msg: "Usuario obtenido",
+  });
+};
+
 const crearUsuario = (req, res) => {
   return res.json({
     msg: "Usuario creado",
@@ -24,6 +30,7 @@ const eliminarUsuario = (req, res) => {
 
 module.exports = {
   obtenerUsuarios,
+  obtenerUsuario,
   crearUsuario,
   actualizarUsuario,
   eliminarUsuario,
